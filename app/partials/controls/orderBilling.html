@@ -1,0 +1,67 @@
+<div class="panel panel-default panel-order">
+    <div class="panel-heading" ng-class="{'no': cart_billing.$invalid, 'yes': !cart_billing.$invalid, 'open': checkOutSection == 'billing' }">
+        <h3 ng-click="checkOutSection = 'billing'" class="panel-title">
+            {{'How do you want to pay?' | r | xlat}}
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div>
+            <billingmessage />
+        </div>
+        <div ng-show="billaddressform || (billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">
+            <addressinput address='billaddress' user='user'></addressinput>
+        </div>
+        <div ng-hide="billaddressform || (billaddresses.length == 0 && user.Permissions.contains('CreateBillToAddress'))">
+            <form name="cart_billing" novalidate="">
+                <div>
+					<div class="row">
+						<div>Payment method:</div>
+						<paymentselector></paymentselector>
+					</div>
+					<div class="row" style="margin-top:15px;">
+						<span class="btn-group">
+							<button class="btn btn-info pull-left" type="button"
+								ng-hide="(billaddressform || (!addressform && (addresses | filter:{IsBilling:true}).length == 0) || !user.Permissions.contains('CreateBillToAddress'))"
+								ng-click="billaddressform = true">
+								{{('Click to Enter A Billing' | r) + ' ' +  ('Address' | r) | xlat}}
+							</button>
+						</span>
+					</div>
+					
+                    <div class="view-form-icon" ng-show="billaddresses.length > 0">
+                        <div ng-class="{'view-form-select': !currentOrder.BillAddressID, '': currentOrder.BillAddressID }">
+                            <label class="required">{{('Or Select An' | r) + ' ' + ('Address From The Dropdown' | r) | xlat}}</label>
+                            <select class="form-control" ng-show="billaddresses" name="billingAddress"
+                                    ng-options="address.ID as address.AddressName for address in billaddresses | filter:{IsBilling:true}" ng-model="currentOrder.BillAddressID" ng-required="currentOrder.BillingEnabled">
+                                <option value=""></option>
+                            </select>
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+                    </div>
+                    <div class="order-location" ng-show="BillAddress">
+					    <p><strong>{{('Bill' | r) + ' ' + ('To:' | r) | xlat}}</strong></p>
+						<div class="row" ng-show="user.Permissions.contains('EditBillToName') && !BillAddress.IsCustEditable">
+                            <div class="col-sm-4">
+                                <input class="form-control" name="billingFirstName" ng-required="currentOrder.BillingEnabled && user.Permissions.contains('EditBillToName') && !BillAddress.IsCustEditable" type="text" ng-model="currentOrder.BillFirstName"
+                                       placeholder="{{('First' | r) + ' ' + ('Name' | r) | xlat}}" autocomplete="off" />
+                            </div>
+                            <div class="col-sm-4">
+                                <input class="form-control" name="billingLastName" ng-required="currentOrder.BillingEnabled && user.Permissions.contains('EditBillToName') && !BillAddress.IsCustEditable" type="text" ng-model="currentOrder.BillLastName"
+                                       placeholder="{{('Last' | r) + ' ' + ('Name' | r) | xlat}}"  />
+                            </div>
+                        </div>
+                        <p ng-show="BillAddress.CompanyName">{{BillAddress.CompanyName}}</p>
+                        <p ng-show="(BillAddress.FirstName || BillAddress.LastName) && (!user.Permissions.contains('EditBillToName') && BillAddress.IsCustEditable)">
+                            {{BillAddress.FirstName + ' ' + BillAddress.LastName}}
+                        </p>
+                        
+                        <p ng-show="BillAddress.Street1">{{BillAddress.Street1}}</p>
+                        <p ng-show="BillAddress.Street2">{{BillAddress.Street2}}</p>
+                        <p ng-show="BillAddress.City || BillAddress.State || BillAddress.Zip">{{BillAddress.City}}<span ng-if="BillAddress.City && BillAddress.State">, </span> {{BillAddress.State}} {{BillAddress.Zip}}</p>
+                        <p ng-show="BillAddress.Phone">{{BillAddress.Phone}}</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

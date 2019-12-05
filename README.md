@@ -1,45 +1,55 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+![](https://github.com/Four51/Four51StorefrontWiki/blob/master/Four51_Storefront.png?raw=true)
+# Four51Storefront (formerly AngularJSOrder)
+> This repository provides the app code needed for the Four51 Storefront Application
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+There are three primary goals to making this repository open source.
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+ 1. Gives Four51 customers and dev partners the ability to [Fork](https://guides.github.com/activities/forking/) this repository to make their own custom apps
+ 2. Gives Four51 customers and dev partners the power to use Pull Requests to contribute new features to the code
+ 3. Gives Four51 customers and dev partners the power to use [Issues](https://guides.github.com/features/issues/) to have control over the development road map to the application
 
----
+![](https://github.com/Four51/Four51StorefrontWiki/blob/master/img/header.png?raw=true)
 
-## Edit a file
+## Important Resources
+[Four51 Storefront API Documentation](http://four51.github.io/#/api/) (The API documentation)<br />
+[AngularJS](https://docs.angularjs.org/api/) (The JavaScript framework)<br />
+[Bootstrap CSS](http://getbootstrap.com/css/) (The css guide for the responsive design)<br />
+[UI Bootstrap](http://angular-ui.github.io/bootstrap/#/top) (Tools used throughout the application) 
+[Four51 Storefront Wiki](http://wiki.four51.com) (Description of Four51 resources)<br />
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+## Installation
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text:
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+This code base does require the existence of a Four51 Storefront app to run.
 
----
+ 1. Create a new [Fork](https://guides.github.com/activities/forking/) of this repository
+ 2. Log on to: [http://www.four51.com/ui/logon.aspx](http://www.four51.com/ui/logon.aspx)
+ 3. Navigate to the Admin tab
+ 4. Click Get File Deployment<br />![](https://github.com/Four51/Four51StorefrontWiki/blob/master/img/deployment.PNG?raw=true)<br />(*please submit a case with four51 if this is not available*)
+ 5. Click New Git Repository...
+   * Enter the Repository URL (*eg. https://github.com/yourusername/AngularJS.git*)
+   * Name the App Code Folder (*this is what will appear in the application drop-down list*)
+   * Set "app" as the Deployment Sub Folder in Repository<br />![](https://github.com/Four51/Four51StorefrontWiki/blob/master/img/deployemnt_settings.PNG?raw=true)<br />
+ 6. Click the "Save" button
+ 7. Click the newly added App Code Folder<br />![](https://github.com/Four51/Four51StorefrontWiki/blob/master/img/newly_created.PNG?raw=true)<br />
+ 8. Click the "Pull Repository" button
+ 9. Click the "Deploy Commit" on the top most commit in the list<br />![](https://github.com/Four51/Four51StorefrontWiki/blob/master/img/deploy.PNG?raw=true)<br />
+ 10. Assign the newly added app to your 2.0 application<br />![](https://github.com/Four51/Four51StorefrontWiki/blob/master/img/assign.PNG?raw=true)
 
-## Create a file
+## Tips
+ * Four51 developers recommend [WebStorm](https://www.jetbrains.com/webstorm/specials/webstorm/webstorm.html?&gclid=CPOpi-GE2M4CFYQAaQodLgsDXg&gclsrc=aw.ds.ds&dclid=CPjjleGE2M4CFVNsAQodrnMEMQ) for developing within a repository
+ * Four51 developers recommend [SourceTree](https://www.sourcetreeapp.com/) for managing commits
+ * The js/routing.js file contains the basic road map to the app
+ * The js/directives/product.js contains a listing of directives used on the product list and product detail pages
+ * In general do not manipulate the js/services.  Instead update the js/controllers for custom business logic
+ * All Custom Solution modules should be placed in the lib/oc directory
 
-Next, you’ll add a new file to this repository.
+## Basic Contribution Steps
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+Four51 has made this repository open to the public which allows Four51 customers and dev partners to have the ability to effect the roadmap of the project by submitting code via GitHub's Pull Request functionality.  If you are interested in contributing code, please see the list of open Issues, or submit your Pull Request with your new functionality.  Below are some basic steps to follow if you wish to have your code reviewed by Four51.
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
-
----
-
-## Clone a repository
-
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
-
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+ 1. Create a new [Fork](https://guides.github.com/activities/forking/) of this repository
+ 2. Clone the new Fork locally
+ 3. Make updates and test your code
+ 4. Pull Request from your Branch to the Master
+ 5. Four51 will review the Pull Request and collaborate
+ 6. After new code is Merged Four51 will deploy the new code when appropriate
